@@ -1,0 +1,8 @@
+.crud-mng-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.crud-mng-container > * {
+  width: 100%;
+}

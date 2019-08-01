@@ -1,0 +1,72 @@
+<!--<img  id="userImage" src={{userData.image}} class="img-fluid" alt="Responsive image" alt="Avatar"/>-->
+<form #f="ngForm" (ngSubmit)="updateseller(f.value)">
+  <div class="row">
+  <div  class="crud-mng-container col-6">
+    <div>
+    <img [src]="seller.imageLink" style="width: 200px;height: 200px"> <br/>
+    </div>
+    <mat-form-field>
+      <input [(ngModel)]="seller.sellerId" name="sellerId" matInput placeholder="sellerId" disabled>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input [(ngModel)]="seller.name" name="name" matInput placeholder="name" disabled>
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="seller.email" name="email" matInput placeholder="email" disabled>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input [(ngModel)]="seller.userName" name="userName" matInput placeholder="userName" disabled>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input [(ngModel)]="seller.password" name="password" matInput placeholder="password" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea [(ngModel)]="seller.description" name="description" matInput placeholder="description"></textarea>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <input [(ngModel)]="seller.startDate" name="startDate" matInput placeholder="startDate" disabled>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input [(ngModel)]="seller.expireDate" name="expireDate" matInput placeholder="expireDate" disabled>
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="seller.products" name="products" matInput placeholder="products" disabled>
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="seller.promotionType" name="promotionType" matInput placeholder="promotionType" disabled>
+    </mat-form-field>
+
+
+
+  <input [(ngModel)]="seller.imageLink" name="imageLink"  type='file' (change)="onSelectFile($event)"> {{selectFieSize | filesize}}
+  <br><br>
+  <button class="btn-success">update</button>
+  </div>
+  <div class="col-6">
+<div *ngIf="seller" class="bg-warning">
+    <h5 class="text-success">Your promotionType is {{seller.promotionType}}</h5>
+    <p class="text-success">if you want change it select :</p>
+</div>
+    <div class="row" style="height: 300px">
+      <div class="col-5 bg-light row-height">
+        <p class="text-info">SELLER_LIMETED ...</p>
+        <br><br><br><br><br><br><br><br>
+        <button type="button" class="btn btn-success">Accept</button>
+      </div>
+      <div class="col-2"></div>
+      <div class="col-5 bg-light row-height">
+        <p class="text-info">SELLER_PREMIUM ...</p>
+        <br><br><br><br><br><br><br><br>
+        <button type="button" class="btn btn-success">Accept</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</form>

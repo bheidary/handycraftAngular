@@ -1,0 +1,41 @@
+<div class="row" *ngFor="let p of sellerProducts ; let i= index ">
+  <div *ngIf="p" class="col-md-12 row-height">
+    <img  style="width: 50px;height: 50px;" [src]="p.image" onError="this.src='../../../assets/images/product.jpg';" [routerLink]="['/detailsel',p.productID]">
+    {{p.name}}
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {{p.price | currency:'SEK':true}}
+    <ng-template [ngIf]="p.status=='ACTIVE'"><span class="text-success">active</span></ng-template>
+    <ng-template [ngIf]="p.status=='SOLD'"><span class="text-primary">Sold</span></ng-template>
+    <ng-template [ngIf]="p.status=='DELETED'"><span class="text-danger">Delete</span></ng-template>
+
+    <div style="float: right">
+      <div ngbDropdown class="nav-item dropdown ">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle"   id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          ...
+        </a>
+        <div ngbDropdownMenu class="dropdown-menu " aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" (click)="openDialogsold(p.productID)">
+            Mark item as sold  <!--open dialog box-->
+          </a>
+          <a class="dropdown-item" (click)="openDialogdelist(p.productID)">
+            Delist Item   <!--open dialog box-->
+          </a>
+          <a class="dropdown-item" [routerLink]="['/editdetailsel',p.productID]">
+            Edit Item
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<p style="text-align: center">
+  <a *ngIf="sellerId && sellerverify!=null" class="btn btn-success" [routerLink]="['/newsel',sellerId]">
+    Sell now
+  </a>
+  <br>
+  <a *ngIf="sellerverify===null" class="btn btn-danger">
+    Verify
+  </a>
+  {{sellerverify}}
+</p>

@@ -1,0 +1,58 @@
+<h3 mat-dialog-title>Already a member? <span class="fa fa-signup" (click)="openDialoglogin()">Log in</span> </h3>
+
+<div mat-dialog-content>
+  <p align="center" class="fa btn-primary btn-block">Sign Up Form</p>
+  <ng-template [ngIf]="emailrepeat">
+    <p align="center" class="font-weight-normal bg-danger">This Email was Register</p>
+  </ng-template>
+  <br>
+
+
+  <form class="example-form" #f="ngForm">
+    <mat-form-field class="example-full-width">
+      <input [(ngModel)]="Fullname" matInput placeholder="Enter Fullname" [formControl]="FullnameFormControl" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="FullnameFormControl.hasError('required')">
+        Fullname is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input [(ngModel)]="email" matInput placeholder="Enter Email" [formControl]="emailFormControl"
+             [errorStateMatcher]="matcher">
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input type="password" [(ngModel)]="password" matInput placeholder="Enter your password" [formControl]="passFormControl" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="passFormControl.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <button  [disabled]="emailFormControl.hasError('email') || emailFormControl.hasError('required') || passFormControl.hasError('required')"  class="fa btn-success btn-block" (click)="onsignup()">Create Account</button>
+  </form>
+
+
+
+
+  <!--
+
+  <div class="crud-mng-container py-4">
+    <mat-form-field  >
+      <input matInput [(ngModel)]="Fullname" placeholder="Full Name">
+    </mat-form-field>
+    <mat-form-field  >
+      <input matInput [(ngModel)]="email" placeholder="Email Address">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="password" placeholder="Create Password">
+    </mat-form-field>
+  </div>
+
+
+  <mat-icon>home</mat-icon>
+  <button  class="fa btn-success btn-block" (click)="onsignup()">Sign up</button>
+-->
+</div>

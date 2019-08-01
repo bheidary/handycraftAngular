@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-3">
+      <br><br>
+      <div *ngIf="userData" class="product-image-wrapper">
+        <div class="single-products">
+          <div class="productinfo text-center">
+            <img  id="userImage" src={{userData.image}} class="img-fluid" alt="Responsive image" alt="Avatar"/>
+            <br>
+            {{  userData.name  }}
+
+            <div class="text-warning">
+              <ng-template #t let-fill="fill">
+                <span class="star" [class.full]="fill === 100"><span class="half" [style.width.%]="fill">&#9733;</span>&#9733;</span>
+              </ng-template>
+              <ngb-rating [(rate)]="RateNumber" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+            </div>
+            <small >0 sales/0 purchases/since 2019</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div *ngIf="userData" class="col-9">
+
+    <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" [selectedIndex]="id">
+
+
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+        <span class="fa-stack fa-5x has-badge" style="font-size: 22px;vertical-align: center" data-count="2">
+          <a style="font-size: 14px;vertical-align: center" aria-hidden="true">Messages</a>
+        </span>
+        </ng-template>
+        <app-messages></app-messages>
+      </mat-tab>
+
+      <!--       <mat-tab label="Messages<i>2</i>"><app-messages></app-messages></mat-tab>       -->
+
+      <mat-tab  label="Selling"><app-selling [sellerId]="userData.sellerId" [sellerProducts]="sellerProducts"></app-selling></mat-tab>
+      <!--<mat-tab label="Buying"><app-buying></app-buying></mat-tab>-->
+      <mat-tab label="Watchlist"><app-watchlist></app-watchlist></mat-tab>
+      <!--<mat-tab label="Reviews"><app-reviews></app-reviews></mat-tab>-->
+    </mat-tab-group>
+  </div>
+
+</div>
+
+
+
+
+
+

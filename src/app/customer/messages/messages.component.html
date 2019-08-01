@@ -1,0 +1,12 @@
+<br><br><br><br><br><br>
+<span style="text-align: center">
+<h3>Your Messages Feed</h3>
+<p>
+  You can find all the latest updates on items you are selling and buying in the messages feed.
+</p>
+<div>
+  <a *ngIf="userData" class="btn btn-success" [routerLink]="['/newsel',userData.sellerId]">
+    Sell now
+  </a>
+</div>
+</span>
